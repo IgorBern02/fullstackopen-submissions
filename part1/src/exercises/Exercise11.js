@@ -1,8 +1,8 @@
-import Header from "./components/Header";
-import Content from "./components/Content";
-import Total from "./components/Total";
+import Header from "../components/exercises11/Header";
+import Content from "../components/exercises11/Content";
+import Total from "../components/exercises11/Total";
 
-const App = () => {
+const Exercises11 = () => {
   const course = "Desenvolvimento de aplicação Half Stack";
   const part1 = "Fundamentos da biblioteca React";
   const exercises1 = 10;
@@ -28,6 +28,4 @@ const App = () => {
   );
 };
 
-console.log(App);
-
-export default App;
+export default Exercises11;
