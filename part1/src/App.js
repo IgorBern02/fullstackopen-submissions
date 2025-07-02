@@ -1,12 +1,14 @@
-//import Exercise11 from "./exercises/courseinfo/Exercise11";
-//import Exercise12 from "./exercises/courseinfo/Exercise12";
-//import Exercise13 from "./exercises/courseinfo/Exercise13";
-//import Exercise14 from "./exercises/courseinfo/Exercise14";
-import Exercise15 from "./exercises/courseinfo/Exercise15";
-//import Unicafe16 from "./exercises/unicafe/exercises16/app";
+//import Exercise11 from "./exercises/courseinfo/exercise11";
+//import Exercise12 from "./exercises/courseinfo/exercise12";
+//import Exercise13 from "./exercises/courseinfo/exercise13";
+//import Exercise14 from "./exercises/courseinfo/exercise14";
+//import Exercise15 from "./exercises/courseinfo/exercise15";
+//import Exercise16 from "./exercises/unicafe/exercise16";
+//import Exercise17 from "./exercises/unicafe/exercise17";
+import Exercise18 from "./exercises/unicafe/exercise18";
 
 const App = () => {
-  return <Exercise15 />;
+  return <Exercise18 />;
 };
 
 export default App;
