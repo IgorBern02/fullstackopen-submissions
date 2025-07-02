@@ -26,12 +26,12 @@ const Unicafe110 = (props) => {
     setTotal(good + neutral + updateBad);
   };
 
-  const media = () => {
+  const average = () => {
     const total = good + neutral + bad;
     return (total / 3).toFixed(2);
   };
 
-  const percentage = (good / total) * 100;
+  const percentage = total > 0 ? ((good / total) * 100).toFixed(2) + "%" : "0%";
 
   return (
     <div>
@@ -54,8 +54,8 @@ const Unicafe110 = (props) => {
           neutral={neutral}
           bad={bad}
           total={total}
-          media={media()}
-          percentage={percentage.toFixed(2)}
+          average={average()}
+          percentage={percentage}
         />
       )}
     </div>

@@ -7,7 +7,7 @@ const Statistics = (props) => {
         <p>Neutral: {props.neutral}</p>
         <p>Bad: {props.bad}</p>
         <p>Total: {props.total}</p>
-        <p>Average: {props.media}</p>
+        <p>Average: {props.average}</p>
         {props.total === 0 ? (
           <p>Percentage: 0.00%</p>
         ) : (

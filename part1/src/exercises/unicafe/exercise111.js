@@ -1,6 +1,8 @@
 import { useState } from "react";
+import Statistics from "../../components/exercises111/Statistics";
+import Button from "../../components/exercises110/Button";
 
-const Unicafe17 = () => {
+const Unicafe111 = (props) => {
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
@@ -29,37 +31,35 @@ const Unicafe17 = () => {
     return (total / 3).toFixed(2);
   };
 
-  const percentage = (good / total) * 100;
+  const percentage = total > 0 ? ((good / total) * 100).toFixed(2) + "%" : "0%";
 
   return (
     <div>
       <section>
         <h2>Give Feedback</h2>
         <div>
-          <button onClick={handleGood}>Good</button>
-          <button onClick={handleNeutral}>Neutral</button>
-          <button onClick={handleBad}>Bad</button>
+          <Button onClick={handleGood} text="Good" />
+          <br></br>
+          <Button onClick={handleNeutral} text="Neutral" />
+          <br></br>
+          <Button onClick={handleBad} text="Bad" />
         </div>
       </section>
 
-      <section>
-        <h2>Statistics</h2>
-        <div>
-          <p>Good: {good}</p>
-          <p>Neutral: {neutral}</p>
-          <p>Bad: {bad}</p>
-          <p>Total: {total}</p>
-          <p>Average: {average()}</p>
-
-          {total === 0 ? (
-            <p>Percentage: 0.00%</p>
-          ) : (
-            <p>Percentage: {percentage.toFixed(2)} %</p>
-          )}
-        </div>
-      </section>
+      {total === 0 ? (
+        <p>No feedback given</p>
+      ) : (
+        <Statistics
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={total}
+          average={average()}
+          percentage={percentage}
+        />
+      )}
     </div>
   );
 };
 
-export default Unicafe17;
+export default Unicafe111;

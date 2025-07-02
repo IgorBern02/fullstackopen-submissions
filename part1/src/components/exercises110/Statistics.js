@@ -1,4 +1,4 @@
-import Statisticsline from "./StatisticLine";
+import Statisticsline from "./Statisticline";
 
 const Statistics = (props) => {
   return (
@@ -9,7 +9,7 @@ const Statistics = (props) => {
         <Statisticsline text="Neutral" value={props.neutral} />
         <Statisticsline text="Bad" value={props.bad} />
         <Statisticsline text="Total" value={props.total} />
-        <Statisticsline text="Average" value={props.media} />
+        <Statisticsline text="Average" value={props.average} />
         {props.total === 0 ? (
           <p>Percentage: 0.00%</p>
         ) : (
