@@ -1,6 +1,5 @@
 import { useState } from "react";
-// import Statistics from "../../components/exercises18/Statistics";
-import Showfeedback from "../../components/exercise19/Showfeedback";
+import Statistics from "../../components/exercises18/Statistics";
 
 const Unicafe19 = (props) => {
   const [good, setGood] = useState(0);
@@ -31,6 +30,8 @@ const Unicafe19 = (props) => {
     return (total / 3).toFixed(2);
   };
 
+  const percentage = (good / total) * 100;
+
   return (
     <div>
       <section>
@@ -45,12 +46,13 @@ const Unicafe19 = (props) => {
         {total === 0 ? (
           <p>No feedback given</p>
         ) : (
-          <Showfeedback
+          <Statistics
             good={good}
             neutral={neutral}
             bad={bad}
             total={total}
             media={media()}
+            percentage={percentage.toFixed(2)}
           />
         )}
       </div>

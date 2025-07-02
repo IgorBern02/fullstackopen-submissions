@@ -29,6 +29,8 @@ const Unicafe17 = () => {
     return (total / 3).toFixed(2);
   };
 
+  const percentage = (good / total) * 100;
+
   return (
     <div>
       <section>
@@ -46,8 +48,14 @@ const Unicafe17 = () => {
           <p>Good: {good}</p>
           <p>Neutral: {neutral}</p>
           <p>Bad: {bad}</p>
-          <p>Total:{total}</p>
-          <p>Average:{media()}</p>
+          <p>Total: {total}</p>
+          <p>Average: {media()}</p>
+
+          {total === 0 ? (
+            <p>Percentage: 0.00%</p>
+          ) : (
+            <p>Percentage: {percentage.toFixed(2)} %</p>
+          )}
         </div>
       </section>
     </div>

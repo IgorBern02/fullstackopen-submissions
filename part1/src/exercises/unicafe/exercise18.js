@@ -30,6 +30,8 @@ const Unicafe18 = (props) => {
     return (total / 3).toFixed(2);
   };
 
+  const percentage = (good / total) * 100;
+
   return (
     <div>
       <section>
@@ -46,6 +48,7 @@ const Unicafe18 = (props) => {
         bad={bad}
         total={total}
         media={media()}
+        percentage={percentage.toFixed(2)}
       />
     </div>
   );
