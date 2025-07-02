@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Statistics from "../../components/exercises110/Statistics";
-import Button from "../../components/exercises110/Button";
+import Statistics from "../../components/unicafe/exercises110/Statistics";
+import Button from "../../components/unicafe/exercises110/Button";
 
 const Unicafe110 = (props) => {
   const [good, setGood] = useState(0);

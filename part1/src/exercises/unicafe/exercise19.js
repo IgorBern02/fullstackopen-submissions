@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Statistics from "../../components/exercises18/Statistics";
+import Statistics from "../../components/unicafe/exercises18/Statistics";
 
 const Unicafe19 = (props) => {
   const [good, setGood] = useState(0);

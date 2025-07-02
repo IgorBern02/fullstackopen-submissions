@@ -1,6 +1,6 @@
-import Header from "../../components/exercises11/Header";
-import Content from "../../components/exercises13/Content";
-import Total from "../../components/exercises11/Total";
+import Header from "../../components/courseinfo/exercises11/Header";
+import Content from "../../components/courseinfo/exercises13/Content";
+import Total from "../../components/courseinfo/exercises11/Total";
 
 const Exercise13 = () => {
   const course = {
