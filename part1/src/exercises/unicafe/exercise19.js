@@ -1,7 +1,8 @@
 import { useState } from "react";
-import Statistics from "../../components/exercises18/Statistics";
+// import Statistics from "../../components/exercises18/Statistics";
+import Showfeedback from "../../components/exercise19/Showfeedback";
 
-const Unicafe18 = (props) => {
+const Unicafe19 = (props) => {
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
@@ -40,15 +41,21 @@ const Unicafe18 = (props) => {
           <button onClick={handleBad}>Bad</button>
         </div>
       </section>
-      <Statistics
-        good={good}
-        neutral={neutral}
-        bad={bad}
-        total={total}
-        media={media()}
-      />
+      <div>
+        {total === 0 ? (
+          <p>No feedback given</p>
+        ) : (
+          <Showfeedback
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={total}
+            media={media()}
+          />
+        )}
+      </div>
     </div>
   );
 };
 
-export default Unicafe18;
+export default Unicafe19;
