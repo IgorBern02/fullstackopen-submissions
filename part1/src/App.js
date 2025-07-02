@@ -8,10 +8,11 @@
 //import Exercise18 from "./exercises/unicafe/exercise18";
 //import Exercise19 from "./exercises/unicafe/exercise19";
 //import Exercise110 from "./exercises/unicafe/exercise110";
-import Exercise111 from "./exercises/unicafe/exercise111";
+//import Exercise111 from "./exercises/unicafe/exercise111";
+import Exercise112 from "./exercises/anecdotes/exercise112";
 
 const App = () => {
-  return <Exercise111 />;
+  return <Exercise112 />;
 };
 
 export default App;
