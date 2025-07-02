@@ -1,6 +1,6 @@
-import Header from "../components/exercises11/Header";
-import Content from "../components/exercises12/Content";
-import Total from "../components/exercises11/Total";
+import Header from "../../components/exercises11/Header";
+import Content from "../../components/exercises12/Content";
+import Total from "../../components/exercises11/Total";
 
 const Exercise12 = () => {
   const course = "Half Stack Application Development";
