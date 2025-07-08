@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const App = () => {
+const Phonebook26 = () => {
   const [persons, setPersons] = useState([{ name: "Arto Hellas" }]);
   const [newName, setNewName] = useState("");
 
@@ -11,8 +11,12 @@ const App = () => {
       name: newName,
     };
 
-    setPersons(persons.concat(newPerson));
-    setNewName("");
+    if (newName === setNewName) {
+      alert(`${newName} is already added to phonebook`);
+    } else {
+      setPersons(persons.concat(newPerson));
+      setNewName("");
+    }
   };
 
   const handleInputChance = (e) => {
@@ -41,4 +45,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Phonebook26;
