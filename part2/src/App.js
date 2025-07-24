@@ -5,10 +5,11 @@
 //import Exercise26 from "./exercises/phonebook/exercise26";
 //import Exercise27 from "./exercises/phonebook/exercise27";
 //import Exercise28 from "./exercises/phonebook/exercise28";
-import Exercise29 from "./exercises/phonebook/exercise29";
+//import Exercise29 from "./exercises/phonebook/exercise29";
+import Exercise210 from "./exercises/phonebook/exercise210";
 
 const App = () => {
-  return <Exercise29 />;
+  return <Exercise210 />;
 };
 
 export default App;

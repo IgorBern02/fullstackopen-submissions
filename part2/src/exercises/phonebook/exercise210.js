@@ -1,6 +1,9 @@
 import { useState } from "react";
+import Filter from "../../components/phonebook/exercise210/Filter";
+import PersonForm from "../../components/phonebook/exercise210/PersonForm";
+import Persons from "../../components/phonebook/exercise210/Person";
 
-const Phonebook29 = () => {
+const Phonebook210 = () => {
   const [persons, setPersons] = useState([
     { name: "Arto Hellas", number: "040-123456", id: 1 },
     { name: "Ada Lovelace", number: "39-44-5323523", id: 2 },
@@ -53,45 +56,25 @@ const Phonebook29 = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <div>
-        filter shown with
-        <input value={filter} onChange={handleInputFilter} />
-      </div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <h2>Add a new</h2>
-          name:{" "}
-          <input value={newName} onChange={handleInputNameChange} type="text" />
-        </div>
+      <Filter
+        text="filter shown with"
+        value={filter}
+        onChange={handleInputFilter}
+      />
+      <h3>Add a new</h3>
 
-        <div>
-          number:{" "}
-          <input
-            value={newNumber}
-            onChange={handleInputNumberChange}
-            type="number"
-          />
-        </div>
+      <PersonForm
+        onSubmit={handleSubmit}
+        newName={newName}
+        handleInputNameChange={handleInputNameChange}
+        newNumber={newNumber}
+        handleInputNumberChange={handleInputNumberChange}
+      />
 
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
-
-      <h2>Numbers</h2>
-      <ul>
-        {filteredPersons.length > 0 ? (
-          filteredPersons.map((person) => (
-            <li key={person.name}>
-              {person.name}: {person.number}
-            </li>
-          ))
-        ) : (
-          <li>No names found</li>
-        )}
-      </ul>
+      <h3>Numbers</h3>
+      <Persons persons={filteredPersons} />
     </div>
   );
 };
 
-export default Phonebook29;
+export default Phonebook210;
