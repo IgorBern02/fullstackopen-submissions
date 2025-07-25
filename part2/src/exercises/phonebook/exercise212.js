@@ -4,20 +4,17 @@ import Filter from "../../components/phonebook/exercise210/Filter";
 import PersonForm from "../../components/phonebook/exercise210/PersonForm";
 import Persons from "../../components/phonebook/exercise210/Person";
 
-const Phonebook211 = () => {
+const Phonebook212 = () => {
   const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    console.log("effect");
     axios.get("http://localhost:3001/persons").then((res) => {
-      console.log("promise fulfilled");
       setPersons(res.data);
     });
   }, []);
-  console.log("render", persons.length, "persons");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,9 +30,11 @@ const Phonebook211 = () => {
     );
 
     if (!existingPerson) {
-      setPersons(persons.concat(newPerson));
-      setNewName("");
-      setNewNumber("");
+      axios.post("http://localhost:3001/persons", newPerson).then((res) => {
+        setPersons(persons.concat(res.data));
+        setNewName("");
+        setNewNumber("");
+      });
     } else {
       alert(`${newName} or number ${newNumber} is already added to phonebook`);
     }
@@ -82,4 +81,4 @@ const Phonebook211 = () => {
   );
 };
 
-export default Phonebook211;
+export default Phonebook212;
