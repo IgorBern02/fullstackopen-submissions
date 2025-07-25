@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import Filter from "../../components/phonebook/exercise210/Filter";
 import PersonForm from "../../components/phonebook/exercise210/PersonForm";
-import Persons from "../../components/phonebook/exercise210/Person";
+import Persons from "../../components/phonebook/exercise214/Person";
 import noteService from "../../services/persons";
 
-const Phonebook213 = () => {
+const Phonebook214 = () => {
   const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    noteService.getAll().then((initialPersons) => {
+    noteService.get().then((initialPersons) => {
       setPersons(initialPersons);
     });
   }, []);
@@ -22,7 +22,6 @@ const Phonebook213 = () => {
     const newPerson = {
       name: newName,
       number: newNumber,
-      id: persons.length + 1,
     };
 
     const existingPerson = persons.find(
@@ -30,7 +29,7 @@ const Phonebook213 = () => {
     );
 
     if (!existingPerson) {
-      noteService.create(newPerson).then((returnedPerson) => {
+      noteService.post(newPerson).then((returnedPerson) => {
         setPersons(persons.concat(returnedPerson));
         setNewName("");
         setNewNumber("");
@@ -57,6 +56,26 @@ const Phonebook213 = () => {
     person.name.toLowerCase().includes(filter.toLowerCase())
   );
 
+  const remove = (id) => {
+    const person = persons.find((p) => p.id === id);
+    if (!person) return;
+
+    const confirm = window.confirm(`Delete ${person.name}?`);
+    if (!confirm) return;
+
+    noteService
+      .remove(id)
+      .then(() => {
+        setPersons(persons.filter((p) => p.id !== id));
+      })
+      .catch((error) => {
+        console.log(
+          `Information of ${person.name} has already been removed from server`
+        );
+        setPersons(persons.filter((p) => p.id !== id));
+      });
+  };
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -76,9 +95,9 @@ const Phonebook213 = () => {
       />
 
       <h3>Numbers</h3>
-      <Persons persons={filteredPersons} />
+      <Persons persons={filteredPersons} remove={remove} />
     </div>
   );
 };
 
-export default Phonebook213;
+export default Phonebook214;
