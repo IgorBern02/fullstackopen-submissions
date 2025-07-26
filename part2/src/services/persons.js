@@ -12,13 +12,19 @@ const post = (newPerson) => {
   return req.then((res) => res.data);
 };
 
+const put = (id, updatedPerson) => {
+  const req = axios.put(`${baseUrl}/${id}`, updatedPerson);
+  return req.then((res) => res.data);
+};
+
 const remove = (id) => {
   const req = axios.delete(`${baseUrl}/${id}`);
   return req.then((res) => res.data);
 };
 
 export default {
-  get: get,
-  post: post,
-  remove: remove,
+  get,
+  post,
+  put,
+  remove,
 };
