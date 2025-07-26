@@ -3,15 +3,15 @@ import Filter from "../../components/phonebook/exercise210/Filter";
 import PersonForm from "../../components/phonebook/exercise210/PersonForm";
 import Persons from "../../components/phonebook/exercise214/Person";
 import noteService from "../../services/persons";
-import "../../components/style/exercise216/index.css";
-import Notification from "../../components/phonebook/exercise216/Notification";
+import "../../components/style/exercise217/index.css";
+import Notification from "../../components/phonebook/exercise217/Notification";
 
-const Phonebook216 = () => {
+const Phonebook217 = () => {
   const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [filter, setFilter] = useState("");
-  const [notification, setNotification] = useState("");
+  const [notification, setNotification] = useState(null);
 
   useEffect(() => {
     noteService.get().then((initialPersons) => {
@@ -37,10 +37,11 @@ const Phonebook216 = () => {
         setNewName("");
         setNewNumber("");
 
-        setNotification(`Added ${returnedPerson.name}`);
-        setTimeout(() => {
-          setNotification(null);
-        }, 5000);
+        setNotification({
+          text: `Added ${returnedPerson.name}`,
+          type: "success",
+        });
+        setTimeout(() => setNotification(null), 5000);
       });
     } else {
       const confirmUpdate = window.confirm(
@@ -61,11 +62,18 @@ const Phonebook216 = () => {
             setNewName("");
             setNewNumber("");
 
-            setNotification(`Updated number for ${returnedPerson.name}`);
+            setNotification({
+              text: `Updated number for ${returnedPerson.name}`,
+              type: "success",
+            });
             setTimeout(() => setNotification(null), 5000);
           })
           .catch((error) => {
-            console.error(error);
+            setNotification({
+              text: `Information of ${updatePerson.name} has already been removed from server`,
+              type: "error",
+            });
+            setTimeout(() => setNotification(null), 5000);
           });
       }
     }
@@ -101,10 +109,11 @@ const Phonebook216 = () => {
         setPersons(persons.filter((p) => p.id !== id));
       })
       .catch((error) => {
-        console.log(
-          `Information of ${person.name} has already been removed from server`
-        );
-        setPersons(persons.filter((p) => p.id !== id));
+        setNotification({
+          text: `Information of ${person.name} has already been removed from server`,
+          type: "error",
+        });
+        setTimeout(() => setNotification(null), 5000);
       });
   };
 
@@ -135,4 +144,4 @@ const Phonebook216 = () => {
   );
 };
 
-export default Phonebook216;
+export default Phonebook217;
