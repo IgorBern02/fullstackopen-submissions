@@ -1,21 +1,38 @@
-// import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const Dataforcountries = () => {
+const Dataforcountries218 = () => {
+  const [countries, setCountries] = useState([]);
+  const [filter, setFilter] = useState("");
+
+  useEffect(() => {
+    axios
+      .get("https://studies.cs.helsinki.fi/restcountries/api/all")
+      .then((res) => {
+        setCountries(res.data);
+      });
+  }, []);
+
+  const handleInputFilter = (e) => {
+    setFilter(e.target.value);
+  };
+
+  const filteredCountries = countries.filter((country) =>
+    country.name.common.toLowerCase().includes(filter.toLowerCase())
+  );
+
   return (
     <div>
-      find countries <input />
-      <h1>Name countrie</h1>
-      <p>capital</p>
-      <p>area</p>
-      <h3>Languages</h3>
+      <div>
+        find countries <input value={filter} onChange={handleInputFilter} />
+      </div>
       <ul>
-        <li>French</li>
-        <li>German</li>
-        <li>Italian</li>
+        {filteredCountries.map((country) => (
+          <li key={country.cca3}>{country.name.common}</li>
+        ))}
       </ul>
-      <p>flag</p>
     </div>
   );
 };
 
-export default Dataforcountries;
+export default Dataforcountries218;
