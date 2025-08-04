@@ -39,6 +39,12 @@ const Dataforcountries220 = () => {
     country.name.common.toLowerCase().includes(filter.toLowerCase())
   );
 
+  useEffect(() => {
+    if (filteredCountries.length === 1) {
+      setSelectedCountry(filteredCountries[0]);
+    }
+  }, [filteredCountries]);
+
   const handleShow = (country) => {
     setSelectedCountry(country);
   };
@@ -63,7 +69,7 @@ const Dataforcountries220 = () => {
         />
 
         {weather && (
-          <>
+          <div>
             <h3>Weather in {country.capital?.[0]}</h3>
             <p>Temperature: {weather.main.temp} °C</p>
             <img
@@ -71,7 +77,7 @@ const Dataforcountries220 = () => {
               alt={weather.weather[0].description}
             />
             <p>Wind speed: {weather.wind.speed} m/s</p>
-          </>
+          </div>
         )}
       </div>
     );
@@ -87,8 +93,6 @@ const Dataforcountries220 = () => {
         renderCountryDetails(selectedCountry)
       ) : filteredCountries.length > 10 ? (
         <p>A lot of matches, specify another filter</p>
-      ) : filteredCountries.length === 1 ? (
-        renderCountryDetails(filteredCountries[0])
       ) : (
         <ul>
           {filteredCountries.map((country) => (
