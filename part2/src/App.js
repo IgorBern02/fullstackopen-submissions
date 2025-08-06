@@ -13,13 +13,13 @@
 //import Exercise214 from "./exercises/phonebook/exercise214";
 // import Exercise215 from "./exercises/phonebook/exercise215";
 // import Exercise216 from "./exercises/phonebook/exercise216";
-// import Exercise217 from "./exercises/phonebook/exercise217";
+import Exercise217 from "./exercises/phonebook/exercise217";
 //import Exercise218 from "./exercises/dataforcountries/exercise218";
 //import Exercise219 from "./exercises/dataforcountries/exercise219";
-import Exercise220 from "./exercises/dataforcountries/exercise220";
+// import Exercise220 from "./exercises/dataforcountries/exercise220";
 
 const App = () => {
-  return <Exercise220 />;
+  return <Exercise217 />;
 };
 
 export default App;
